@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ SuperEntraînement UV 02 — 75 QCU</title>
+    <title>⚡ Entraînement UV 02</title>
     <style>
         :root {
-            --bg-page: #f8fafc;
+            --bg-page: #fddf7fa; /* Fond très clair et doux */
             --bg-card: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --accent: #6366f1;
-            --accent-hover: #4f46e5;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --accent: #4f46e5; /* Indigo moderne */
+            --accent-light: #eeebff;
             --success: #10b981;
-            --success-bg: #ecfdf5;
+            --success-bg: #f0fdf4;
             --error: #ef4444;
             --error-bg: #fef2f2;
             --border: #e2e8f0;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
-            --radius: 16px;
-            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --radius: 12px;
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         [data-theme="dark"] {
-            --bg-page: #0b0f19;
-            --bg-card: #151f32;
+            --bg-page: #0f172a;
+            --bg-card: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border: #243249;
-            --success-bg: #064e3b;
-            --error-bg: #7f1d1d;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+            --border: #334155;
+            --success-bg: rgba(16, 185, 129, 0.1);
+            --error-bg: rgba(239, 68, 68, 0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
         }
 
         * {
@@ -47,115 +47,117 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
-            transition: background-color 0.3s ease;
+            padding: 24px;
+            transition: background-color 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
             width: 100%;
-            max-width: 720px;
+            max-width: 680px;
             background-color: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 40px;
-            transition: transform 0.2s ease, background-color 0.3s ease;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
         .title-badge {
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 30px;
             font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
         .theme-btn {
             background: none;
             border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 8px 16px;
-            border-radius: var(--radius);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .theme-btn:hover {
+            color: var(--text-main);
+            border-color: var(--text-muted);
         }
 
         .progress-meta {
             display: flex;
             justify-content: space-between;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 12px;
-            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         .progress-track {
             background-color: var(--border);
-            height: 10px;
-            border-radius: 20px;
+            height: 6px;
+            border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
         .progress-bar {
-            background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+            background-color: var(--accent);
             height: 100%;
             width: 0%;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .question-text {
-            font-size: 1.35rem;
-            font-weight: 700;
+            font-size: 1.25rem;
+            font-weight: 600;
             line-height: 1.5;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
 
         .options-container {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            margin-bottom: 32px;
+            gap: 12px;
+            margin-bottom: 24px;
         }
 
         .option-card {
             background: none;
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 18px 24px;
+            padding: 16px 20px;
             text-align: left;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-family: inherit;
             color: var(--text-main);
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 400;
             width: 100%;
             transition: all 0.2s ease;
-            position: relative;
+            line-height: 1.4;
         }
 
         .option-card:hover:not(.locked) {
             border-color: var(--accent);
-            background-color: rgba(99, 102, 241, 0.04);
-            transform: translateY(-2px);
+            background-color: rgba(79, 70, 229, 0.02);
         }
 
         .option-card.correct {
             border-color: var(--success) !important;
             background-color: var(--success-bg) !important;
             color: var(--success);
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .option-card.wrong {
@@ -169,64 +171,62 @@
         }
 
         .feedback-box {
-            border-left: 5px solid var(--accent);
-            background-color: var(--bg-page);
-            padding: 20px;
-            border-radius: 4px var(--radius) var(--radius) 4px;
-            margin-bottom: 32px;
+            background-color: rgba(79, 70, 229, 0.04);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-top: 16px;
+            margin-bottom: 24px;
             display: none;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-main);
         }
 
         .action-btn {
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-            color: white;
+            background-color: var(--text-main);
+            color: var(--bg-card);
             border: none;
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: var(--radius);
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 0.95rem;
+            font-weight: 600;
             cursor: pointer;
             width: 100%;
             display: none;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+            transition: opacity 0.2s;
         }
 
         .action-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+            opacity: 0.9;
         }
 
         .result-screen {
             text-align: center;
             display: none;
-            padding: 20px 0;
+            padding: 40px 0;
         }
 
         .result-score {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 24px 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 20px 0 32px 0;
         }
 
         .restart-btn {
-            background-color: var(--text-main);
-            color: var(--bg-card);
+            background-color: var(--accent);
+            color: #ffffff;
             border: none;
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: var(--radius);
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 700;
-            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
         }
 
         .restart-btn:hover {
-            transform: scale(1.02);
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -234,8 +234,8 @@
 
 <div class="container">
     <div class="header">
-        <span class="title-badge">UV 02 — Juridique (75 Q)</span>
-        <button class="theme-btn" id="themeToggle">🌓 Mode Sombre</button>
+        <span class="title-badge">UV 02 — Juridique</span>
+        <button class="theme-btn" id="themeToggle">Mode sombre</button>
     </div>
 
     <div id="quizSection">
@@ -256,13 +256,14 @@
     </div>
 
     <div class="result-screen" id="resultSection">
-        <h2>🎉 Entraînement Terminé !</h2>
+        <h2>Entraînement terminé</h2>
         <div class="result-score"><span id="finalScore">0</span> / <span class="maxQuestions">75</span></div>
         <button class="restart-btn" onclick="restartQuiz()">Recommencer une session</button>
     </div>
 </div>
 
 <script>
+    // Le reste du code JavaScript reste strictement identique à ta version corrigée précédente
     const rawQuizData = [
         {
             question: "Dans le cadre de son activité, l'agent de sécurité porte :",
@@ -277,7 +278,7 @@
             tip: "Employer délibérément un agent sans carte pro constitue un délit pénal lourd pour le gérant."
         },
         {
-            question: "Le respect des conditions pour être recruté dans une entreprise privée de sécurité est garanti par la détention :",
+            question: "Le respect des conditions pour être recruté dans une entreprise privée de sécurité est guaranteed par la détention :",
             options: ["D'un badge au nom de la société qui emploie", "Aucune des autres réponses", "D'une attestation de l'employeur", "D'un contrat de travail", "D'une carte professionnelle dématérialisée délivrée par la C.L.A.C"],
             correctText: "D'une carte professionnelle dématérialisée délivrée par la C.L.A.C",
             tip: "La commission d'agrément (CLAC) valide le profil avant toute embauche effective."
@@ -770,7 +771,7 @@
         shuffledOptions.forEach((opt) => {
             const btn = document.createElement('button');
             btn.className = 'option-card';
-            btn.textContent = opt; // Sécurité renforcée ici
+            btn.textContent = opt;
             btn.onclick = () => handleSelection(opt, btn);
             optionsContainer.appendChild(btn);
         });
@@ -825,10 +826,10 @@
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         if (isDark) {
             document.documentElement.removeAttribute('data-theme');
-            themeToggle.textContent = "🌓 Mode Sombre";
+            themeToggle.textContent = "Mode sombre";
         } else {
             document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.textContent = "🌓 Mode Clair";
+            themeToggle.textContent = "Mode clair";
         }
     };
 
